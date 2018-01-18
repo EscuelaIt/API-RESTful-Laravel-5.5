@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Seller;
-use Illuminate\Http\Request;
 
 class SellerController extends Controller
 {
@@ -14,51 +13,19 @@ class SellerController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $sellers = Seller::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return $this->showAll($sellers);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Seller  $seller
+     * @param  \App\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
     public function show(Seller $seller)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Seller  $seller
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Seller $seller)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Seller  $seller
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Seller $seller)
-    {
-        //
+        return $this->showOne($seller);
     }
 }
