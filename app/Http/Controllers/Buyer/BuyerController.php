@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Buyer;
 
-use App\Seller;
+use App\Buyer;
+use App\Http\Controllers\Controller;
 
-class SellerController extends Controller
+class BuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,9 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::all();
+        $buyers = Buyer::all();
 
-        return $this->showAll($sellers);
+        return $this->showAll($buyers);
     }
 
     /**
@@ -24,8 +25,8 @@ class SellerController extends Controller
      * @param  \App\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function show(Seller $seller)
+    public function show(Buyer $buyer)
     {
-        return $this->showOne($seller);
+        return $this->showOne($buyer);
     }
 }
