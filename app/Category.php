@@ -4,9 +4,12 @@ namespace App;
 
 use App\Product;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\CategoryResource;
 
 class Category extends Model
 {
+    public $resource = CategoryResource::class;
+
     protected $fillable = [
         'name',
         'description',
@@ -16,4 +19,8 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+
+    protected $hidden = [
+        'pivot',
+    ];
 }

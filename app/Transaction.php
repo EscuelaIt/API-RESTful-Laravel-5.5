@@ -4,9 +4,12 @@ namespace App;
 
 use App\Buyer;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\TransactionResource;
 
 class Transaction extends Model
 {
+    public $resource = TransactionResource::class;
+
     protected $fillable = [
         'quantity',
         'buyer_id',

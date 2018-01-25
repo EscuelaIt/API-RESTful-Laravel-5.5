@@ -19,12 +19,24 @@ trait ApiResponser
 
     function showAll(Collection $collection, $code = 200)
     {
-        return $this->successResponse(['data' => $collection], $code);
+        if ($collection->isEmpty()) {
+            return $this->successResponse(['data' => $collection], $code);
+        }
+
+        $resource = $collection->first()->resource;
+
+        $transformedCollection = $resource::collection($collection);
+
+        return $this->successResponse(['data' => $transformedCollection], $code);
     }
 
     function showOne(Model $instance, $code = 200)
     {
-        return $this->successResponse(['data' => $instance], $code);
+        $resource = $instance->resource;
+
+        $transformedInstance = new $resource($instance);
+
+        return $this->successResponse(['data' => $transformedInstance], $code);
     }
 
     function showMessage($message, $code = 200)
