@@ -15,7 +15,7 @@ class ProductTransactionController extends Controller
      */
     public function index(Product $product)
     {
-        $transactions = $product->transactions;
+        $transactions = $product->transactions()->paginate($this->determinePageSize());
 
         return $this->showAll($transactions);
     }

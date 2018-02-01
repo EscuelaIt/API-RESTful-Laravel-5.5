@@ -33,6 +33,14 @@ abstract class BaseResource extends Resource
             $transformedAttributes[static::mapAttribute($attribute)] = $value;
         }
 
+        if (method_exists($this, 'generateLinks')) {
+            $hateoas = [
+                'links' => $this->generateLinks($request),
+            ];
+
+            return array_merge($transformedAttributes, $hateoas);
+        }
+
         return $transformedAttributes;
     }
 }

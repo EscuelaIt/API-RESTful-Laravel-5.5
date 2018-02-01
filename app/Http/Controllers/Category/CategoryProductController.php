@@ -15,7 +15,7 @@ class CategoryProductController extends Controller
      */
     public function index(Category $category)
     {
-        $products = $category->products;
+        $products = $category->products()->paginate($this->determinePageSize());
 
         return $this->showAll($products);
     }

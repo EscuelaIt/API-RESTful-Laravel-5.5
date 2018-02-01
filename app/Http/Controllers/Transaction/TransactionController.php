@@ -14,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::paginate($this->determinePageSize());
 
         return $this->showAll($transactions);
     }

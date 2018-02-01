@@ -15,7 +15,7 @@ class TransactionSellerController extends Controller
      */
     public function index(Transaction $transaction)
     {
-        $seller = $transaction->product->seller;
+        $seller = $transaction->product->seller()->paginate($this->determinePageSize());
 
         return $this->showOne($seller);
     }

@@ -14,4 +14,14 @@ class UserResource extends BaseResource
         'updated_at' => 'last_modified',
         'created_at' => 'creation_date',
     ];
+
+    public function generateLinks($request)
+    {
+        return [
+            [
+                'rel' => 'self',
+                'href' => route('users.show', $this->id),
+            ],
+        ];
+    }
 }

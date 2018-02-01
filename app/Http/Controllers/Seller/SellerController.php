@@ -14,7 +14,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::all();
+        $sellers = Seller::paginate($this->determinePageSize());
 
         return $this->showAll($sellers);
     }

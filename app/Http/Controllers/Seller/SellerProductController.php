@@ -19,7 +19,7 @@ class SellerProductController extends Controller
      */
     public function index(Seller $seller)
     {
-        $products = $seller->products;
+        $products = $seller->products()->paginate($this->determinePageSize());
 
         return $this->showAll($products);
     }

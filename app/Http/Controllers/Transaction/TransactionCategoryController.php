@@ -15,7 +15,7 @@ class TransactionCategoryController extends Controller
      */
     public function index(Transaction $transaction)
     {
-        $categories = $transaction->product->categories;
+        $categories = $transaction->product->categories()->paginate($this->determinePageSize());
 
         return $this->showAll($categories);
     }

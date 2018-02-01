@@ -17,7 +17,7 @@ class ProductCategoryController extends Controller
      */
     public function index(Product $product)
     {
-        $categories = $product->categories;
+        $categories = $product->categories()->paginate($this->determinePageSize());
 
         return $this->showAll($categories);
     }
@@ -35,7 +35,7 @@ class ProductCategoryController extends Controller
         // attach, sync, syncWithoutDetach
         $product->categories()->syncWithoutDetaching([$category->id]);
 
-        return $this->showAll($product->categories);
+        return $this->showAll($product->categories());
     }
 
     /**

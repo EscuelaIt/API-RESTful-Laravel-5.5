@@ -15,7 +15,7 @@ class BuyerTransactionController extends Controller
      */
     public function index(Buyer $buyer)
     {
-        $transactions = $buyer->transactions;
+        $transactions = $buyer->transactions()->paginate($this->determinePageSize());
 
         return $this->showAll($transactions);
     }
