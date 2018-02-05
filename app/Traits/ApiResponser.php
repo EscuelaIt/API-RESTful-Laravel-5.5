@@ -41,7 +41,7 @@ trait ApiResponser
 
         $transformedInstance = new $resource($instance);
 
-        return $this->successResponse(['data' => $transformedInstance], $code);
+        return $this->successResponse($transformedInstance, $code);
     }
 
     function showMessage($message, $code = 200)
